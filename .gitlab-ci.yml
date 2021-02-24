@@ -1,0 +1,39 @@
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - test
+  - deploy
+
+step-staging:
+  stage: test
+  before_script:
+    - export DYNAMIC_ENV_VAR=DEVELOP
+  only:
+    - staging
+  tags:
+    - staging
+  script:
+    - echo running tests in $DYNAMIC_ENV_VAR
+    - sudo apt-get install -y python-pip
+    - sudo apt-get install docker-compose -y
+    - sudo docker image prune -f
+    - sudo docker-compose -f docker-compose.yml build --no-cache
+    - sudo docker-compose -f docker-compose.yml up -d
+    
+step-production:
+  stage: deploy
+  before_script:
+    - export DYNAMIC_ENV_VAR=DEVELOP
+  only:
+    - production
+  tags:
+    - production
+  script:
+    - echo running tests in $DYNAMIC_ENV_VAR
+    - sudo apt-get install -y python-pip
+    - sudo apt-get install docker-compose -y
+    - sudo docker image prune -f
+    - sudo docker-compose -f docker-compose.yml build --no-cache
+    - sudo docker-compose -f docker-compose.yml up -d

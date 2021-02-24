@@ -1,0 +1,12 @@
+1.Launch Ubuntu 18 Instance
+2.Install and configure docker community edition
+3.Install gitlab runner
+4.changer the sudo previlege user for gitlab runner and then configure it
+5. then push the files to appropriate repo branch
+
+Ref
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+https://hackernoon.com/configuring-gitlab-ci-on-aws-ec2-using-docker-7c359d513a46
+https://www.atlassian.com/git/tutorials/using-branches/git-checkout#:~:text=The%20git%20branch%20command%20can,to%20switch%20to%20that%20branch.
+https://stackoverflow.com/questions/37187899/change-gitlab-ci-runner-user
